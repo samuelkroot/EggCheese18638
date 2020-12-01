@@ -57,9 +57,12 @@ public class BasicOpMode_Linear extends LinearOpMode {
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
             drivetrain.mecanumDrive_Cartesian(gamepad1.left_stick_x, gamepad1.left_stick_y, gamepad1.right_stick_x);
-
+            drivetrain.mecanumDrive_Cartesian(-gamepad1.left_trigger, 0, 0);
+            drivetrain.mecanumDrive_Cartesian(gamepad1.right_trigger, 0, 0);
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
+            telemetry.addData("rightTrigger", gamepad1.right_trigger);
+            telemetry.addData("leftTrigger", gamepad1.left_trigger);
             telemetry.update();
         }
     }

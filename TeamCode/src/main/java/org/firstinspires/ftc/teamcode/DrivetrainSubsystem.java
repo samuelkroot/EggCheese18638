@@ -52,6 +52,7 @@ public class DrivetrainSubsystem {
 
     }
 
+
     private double[] normalize(double[] wheelSpeeds) {
         double maxMagnitude = Math.abs(wheelSpeeds[0]);
 

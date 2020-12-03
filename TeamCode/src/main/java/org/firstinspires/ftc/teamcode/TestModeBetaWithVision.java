@@ -104,6 +104,12 @@ public class TestModeBetaWithVision extends OpMode {
 
         if (vision.visionLabel.equalsIgnoreCase("Single")) {
             //vroom vroom
+            testServo.setPosition(0.8);
+        } else if (vision.visionLabel.equalsIgnoreCase("Quad")) {
+            //different vroom vroom
+            testServo.setPosition(0.2);
+        } else {
+            //do nothing :P
         }
 
         // Call Telemetry

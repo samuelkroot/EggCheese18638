@@ -48,6 +48,8 @@ public class VisionSubsystem  { //hi this is a commit test
         parameters.cameraName = hardwareMap.get(WebcamName.class, "cam0");;
         vuforia = ClassFactory.getInstance().createVuforia(parameters);
 
+        visionLabel = "default";
+
         this.hardwareMap = hardwareMap;
         this.telemetry = telemetry;
     }

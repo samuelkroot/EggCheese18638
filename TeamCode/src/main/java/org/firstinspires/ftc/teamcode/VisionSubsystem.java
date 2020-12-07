@@ -22,7 +22,7 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
 
 
-public class VisionSubsystem  { //hi this is a commit test
+public class VisionSubsystem  {
     private static final String TFOD_MODEL_ASSET = "UltimateGoal.tflite";
     private static final String LABEL_FIRST_ELEMENT = "Quad";
     private static final String LABEL_SECOND_ELEMENT = "Single";
@@ -111,6 +111,18 @@ public class VisionSubsystem  { //hi this is a commit test
                 telemetry.update();
             }
         }
+    }
+
+    public int getVisionLabel() {
+        int x;
+        if (visionLabel.equals("Single")) {
+            x = 1;
+        } else if (visionLabel.equals("Quad")) {
+            x = 4;
+        } else {
+            x = 0;
+        }
+        return x;
     }
 
     /* Initialize the TensorFlow Object Detection engine. */

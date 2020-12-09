@@ -102,10 +102,10 @@ public class TestModeBetaWithVision extends OpMode {
 
         vision.runVisionSystem();
 
-        if (vision.visionLabel.equalsIgnoreCase("Single")) {
+        if (vision.getVisionLabel()==1) {
             //vroom vroom
             testServo.setPosition(0.8);
-        } else if (vision.visionLabel.equalsIgnoreCase("Quad")) {
+        } else if (vision.getVisionLabel()==4) {
             //different vroom vroom
             testServo.setPosition(0.2);
         } else {

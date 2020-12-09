@@ -39,7 +39,7 @@ public class VisionSubsystem  {
     private HardwareMap hardwareMap;
     private Telemetry telemetry;
 
-    public String visionLabel;
+    private String visionLabel;
 
 
     public VisionSubsystem(HardwareMap hardwareMap, Telemetry telemetry) {
@@ -124,6 +124,8 @@ public class VisionSubsystem  {
         }
         return x;
     }
+
+
 
     /* Initialize the TensorFlow Object Detection engine. */
     private void initTfod() {

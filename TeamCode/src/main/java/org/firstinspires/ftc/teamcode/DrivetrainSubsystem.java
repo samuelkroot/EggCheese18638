@@ -3,9 +3,11 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 public class DrivetrainSubsystem {
     DcMotor frontLeft, frontRight, backLeft, backRight;
+    Servo testServo;
 
     public DrivetrainSubsystem(HardwareMap hardwareMap) {
         frontRight = hardwareMap.get(DcMotor.class, "FR");
@@ -17,6 +19,8 @@ public class DrivetrainSubsystem {
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
         backLeft.setDirection(DcMotor.Direction.FORWARD);
         backRight.setDirection(DcMotor.Direction.REVERSE);
+
+        testServo = hardwareMap.get(Servo.class, "testservo");
     }
 
     public void stopDriving() {
@@ -52,6 +56,9 @@ public class DrivetrainSubsystem {
 
     }
 
+    public void setTestServo(double pos){
+        testServo.setPosition(pos);
+    }
 
     private double[] normalize(double[] wheelSpeeds) {
         double maxMagnitude = Math.abs(wheelSpeeds[0]);

@@ -6,7 +6,6 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -18,10 +17,10 @@ import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 
 public class TestModeBetaWithVision extends OpMode {
     private ElapsedTime runtime = new ElapsedTime();
-    Servo testServo;
     //ShooterSubsystem shooter;
     //Servo revServo;
     VisionSubsystem vision;
+    DrivetrainSubsystem drivetrain;
     WebcamName theWebcam;
 //////////////////////////////////////////////////////////////////////////////////////////
 
@@ -30,9 +29,9 @@ public class TestModeBetaWithVision extends OpMode {
     public void init() {
         //shooter = new ShooterSubsystem(this.hardwareMap);
         vision = new VisionSubsystem(this.hardwareMap, this.telemetry);
+        drivetrain = new DrivetrainSubsystem(this.hardwareMap);
 
         // temporary adds for testing purposes
-        testServo = hardwareMap.get(Servo.class, "testservo");
         //revServo = hardwareMap.get(Servo.class, "revservo");
         //myServo.setDirection(REVERSE);
 
@@ -104,10 +103,10 @@ public class TestModeBetaWithVision extends OpMode {
 
         if (vision.getVisionLabel()==1) {
             //vroom vroom
-            testServo.setPosition(0.8);
+            drivetrain.setTestServo(0.8);
         } else if (vision.getVisionLabel()==4) {
             //different vroom vroom
-            testServo.setPosition(0.2);
+            drivetrain.setTestServo(0.2);
         } else {
             //do nothing :P
         }

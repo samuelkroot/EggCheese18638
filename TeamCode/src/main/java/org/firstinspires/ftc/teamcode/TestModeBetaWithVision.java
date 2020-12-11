@@ -106,7 +106,7 @@ public class TestModeBetaWithVision extends OpMode {
             //vroom vroom
             testServo.setPosition(0.8);
         } else if (vision.getVisionLabel()==4) {
-            //frick your different vroom vroom
+            //different vroom vroom
             testServo.setPosition(0.2);
         } else {
             //do nothing :P

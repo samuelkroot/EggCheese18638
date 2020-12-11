@@ -34,9 +34,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.HardwarePushbot;
-
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
+import com.qualcomm.robotcore.hardware.HardwareMap;
 
 /**
  * This file illustrates the concept of driving a path based on time.
@@ -64,7 +62,7 @@ import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.har
 public class AutoDrive_draft0 extends LinearOpMode {
 
     /* Declare OpMode members. */
-    DrivetrainSubsystem drivetrain = new DrivetrainSubsystem(hardwareMap);
+    DrivetrainSubsystem drivetrain;
     private ElapsedTime     runtime = new ElapsedTime();
 
 
@@ -78,6 +76,8 @@ public class AutoDrive_draft0 extends LinearOpMode {
          * Initialize the drive system variables.
          * The init() method of the hardware class does all the work here
          */
+        drivetrain = new DrivetrainSubsystem(hardwareMap);
+
 
         // Send telemetry message to signify robot waiting;
         telemetry.addData("Status", "Ready to run");    //
@@ -89,7 +89,7 @@ public class AutoDrive_draft0 extends LinearOpMode {
         // Step through each leg of the path, ensuring that the Auto mode has not been stopped along the way
 
         // Step 1:  Drive forward for 3 seconds
-        drivetrain.mecanumDrive_Cartesian(0, 0.5, 0);
+        drivetrain.mecanumDrive_Cartesian(0, -0.75, 0);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 3.0)) {
             telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
@@ -105,7 +105,7 @@ public class AutoDrive_draft0 extends LinearOpMode {
         }
 
         // Step 3:  Drive Backwards for 1 Second
-        drivetrain.mecanumDrive_Cartesian(0, -0.5, 0);
+        drivetrain.mecanumDrive_Cartesian(0, 0.75, 0);
         runtime.reset();
         while (opModeIsActive() && (runtime.seconds() < 1.0)) {
             telemetry.addData("Path", "Leg 3: %2.5f S Elapsed", runtime.seconds());

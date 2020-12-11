@@ -105,17 +105,23 @@ public class TestGyroTeleop extends LinearOpMode
         imu.startAccelerationIntegration(new Position(), new Velocity(), 1000);
 
         // Loop and update the dashboard
+
+
+        //loop
         while (opModeIsActive()) {
-            double target = 90;
-            double tolerance = 5;
-            double speed = .5;
-            angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
-            if(Math.abs(target - angles.firstAngle) > tolerance){
-             drivetrain.setMotors(-speed,-speed,speed,speed);
-            } else {
-                drivetrain.setMotors(0, 0, 0, 0);
+            if (gamepad1.right_bumper) {
+                double target = 90;
+                double tolerance = 5;
+                double speed = .5;
+                angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+                if (Math.abs(target - angles.firstAngle) > tolerance) {
+                    drivetrain.setMotors(-speed, -speed, speed, speed);
+                } else {
+                    drivetrain.setMotors(0, 0, 0, 0);
+                }
+
+                telemetry.update();
             }
-            telemetry.update();
         }
     }
 

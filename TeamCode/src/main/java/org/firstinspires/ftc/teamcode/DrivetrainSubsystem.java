@@ -4,6 +4,11 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+
 public class DrivetrainSubsystem {
     DcMotor frontLeft, frontRight, backLeft, backRight;
 
@@ -52,6 +57,17 @@ public class DrivetrainSubsystem {
 
     }
 
+    public void turnToAngle(){}
+        Orientation angles;
+        double target = 90;
+        double tolerance = 5;
+        double speed = .5;
+        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+        if (Math.abs(target - angles.firstAngle) > tolerance) {
+            drivetrain.setMotors(-speed, -speed, speed, speed);
+        } else {
+            drivetrain.setMotors(0, 0, 0, 0);
+        }
 
     private double[] normalize(double[] wheelSpeeds) {
         double maxMagnitude = Math.abs(wheelSpeeds[0]);

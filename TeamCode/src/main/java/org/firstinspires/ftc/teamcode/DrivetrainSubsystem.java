@@ -4,6 +4,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
@@ -12,6 +13,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 public class DrivetrainSubsystem {
     DcMotor frontLeft, frontRight, backLeft, backRight;
+    Servo testServo;
 
     public DrivetrainSubsystem(HardwareMap hardwareMap) {
         frontRight = hardwareMap.get(DcMotor.class, "FR");
@@ -23,6 +25,8 @@ public class DrivetrainSubsystem {
         frontLeft.setDirection(DcMotor.Direction.FORWARD);
         backLeft.setDirection(DcMotor.Direction.FORWARD);
         backRight.setDirection(DcMotor.Direction.REVERSE);
+
+        testServo = hardwareMap.get(Servo.class, "testservo");
     }
 
     public void stopDriving() {
@@ -57,11 +61,12 @@ public class DrivetrainSubsystem {
         setMotors(wheelSpeeds[0], wheelSpeeds[1], wheelSpeeds[2], wheelSpeeds[3]);
 
     }
-    BNO055IMU imu;
-    public DriveTrain(HardwareMap hardwareMap, BNO055IMU imu){
-        this.imu=imu;
+
+    public void setTestServo(double pos){
+        testServo.setPosition(pos);
     }
-    
+
+
     public void turnToAngle(){}
         Orientation angles;
         double target = 90;

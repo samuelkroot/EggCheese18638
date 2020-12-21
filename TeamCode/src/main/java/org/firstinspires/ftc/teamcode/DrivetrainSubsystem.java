@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
@@ -56,7 +57,11 @@ public class DrivetrainSubsystem {
         setMotors(wheelSpeeds[0], wheelSpeeds[1], wheelSpeeds[2], wheelSpeeds[3]);
 
     }
-
+    BNO055IMU imu;
+    public DriveTrain(HardwareMap hardwareMap, BNO055IMU imu){
+        this.imu=imu;
+    }
+    
     public void turnToAngle(){}
         Orientation angles;
         double target = 90;

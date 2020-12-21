@@ -42,7 +42,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
                 runtime.reset();
                 while(opModeIsActive()){
                     telemetry.addData("Path", "Leg 1: %2.5f S Elapsed", runtime.seconds());
-                    telemetry.update(); // why
+                    telemetry.update(); // wah
             }
         }
     }
